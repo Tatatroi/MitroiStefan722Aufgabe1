@@ -20,14 +20,22 @@ class Patient{
         Datum = datum;
         Krankenhaus = krankenhaus;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "Patient='" + Patient + '\'' +
+                ", Id=" + Id +
+                '}';
+    }
 }
 
 public class Patients {
 
     List<Patient> eintraege2 = new ArrayList<>();
-    public static String dataFile = "src\data.json";
+//    public static String dataFile = "src/data.json";
 
-    public Patients() throws IOException {
+    public Patients(String dataFile) throws IOException {
         this.eintraege2 = lesenDatei2(dataFile);
     }
 
@@ -35,7 +43,7 @@ public class Patients {
         List<Patient> eintraege = new ArrayList<>();
 
         // Read the JSON file content as a String
-        String jsonContent = new String(Files.readAllBytes(Paths.get(dataFile))).trim();
+        String jsonContent = new String(Files.readAllBytes(Paths.get(dateiname))).trim();
 
         // Remove the surrounding square brackets [ and ]
         jsonContent = jsonContent.substring(1, jsonContent.length() - 1).trim();
@@ -64,7 +72,7 @@ public class Patients {
                 String value = keyValue[1].replace("\"", "").trim();
 
                 switch (key) {
-                    case "id":
+                    case "Id":
                         Id = Integer.parseInt(value);
                         break;
                     case "Patient":
