@@ -23,11 +23,19 @@ class Patient{
 }
 
 public class Patients {
+
+    List<Patient> eintraege2 = new ArrayList<>();
+    public static String dataFile = "src\data.json";
+
+    public Patients() throws IOException {
+        this.eintraege2 = lesenDatei2(dataFile);
+    }
+
     public static List<Patient> lesenDatei2(String dateiname) throws IOException {
         List<Patient> eintraege = new ArrayList<>();
 
         // Read the JSON file content as a String
-        String jsonContent = new String(Files.readAllBytes(Paths.get(dateiname))).trim();
+        String jsonContent = new String(Files.readAllBytes(Paths.get(dataFile))).trim();
 
         // Remove the surrounding square brackets [ and ]
         jsonContent = jsonContent.substring(1, jsonContent.length() - 1).trim();

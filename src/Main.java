@@ -1,7 +1,10 @@
+import java.io.IOException;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("H");
+    public static void main(String[] args) throws IOException {
+        Patients p = new Patients();
+        p.eintraege2.forEach(System.out::println);
     }
 }
